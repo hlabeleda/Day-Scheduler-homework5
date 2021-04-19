@@ -52,9 +52,14 @@ timeCompare();
 // console.log(beginningTime.toDate()); // Mon May 12 2014 08:45:00
 // console.log(endTime.toDate());
 
+//==================================================================================
+//trying to get input to stay in textarea.  I can get it into local storage, but it doesn't stay after refresh.
+
 var userTextInput = document.querySelector(".description");
 //console.log("what am i", userTextInput);
 var saveButton = document.querySelector(".saveBtn");
+
+var todos =[];
 
 function saveUserInput() {
     var userInput = {
@@ -64,20 +69,34 @@ function saveUserInput() {
     };
     
     localStorage.setItem("userInput", JSON.stringify(userInput));
+    
 }
 
-function renderUserInput() {
+// function renderUserInput() {
+//     var lastUserInput = JSON.parse(localStorage.getItem("userInput"));
+//     console.log("what am i", lastUserInput);
+
+//     if (lastUserInput !== null) {
+//     // document.querySelector(".description");
+//     userTextInput.textContent = lastUserInput;
+//     JSON.stringify(lastUserInput);
+    
+//     } else {
+//         return;
+//     }
+    
+// }
+
+function renderMessage() {
     var lastUserInput = JSON.parse(localStorage.getItem("userInput"));
 
     if (lastUserInput !== null) {
-    document.querySelector(".description");
-    
-    
-    } else {
-        return;
+        document.querySelector(".description").textContent = lastUserInput.userTextInput;
     }
-    
+
+
 }
+
 
 
 
@@ -85,7 +104,7 @@ saveButton.addEventListener("click", function(event) {
 
     event.preventDefault();
     saveUserInput();
-    renderUserInput();
+    renderMessage();
 
 
 
@@ -93,7 +112,7 @@ saveButton.addEventListener("click", function(event) {
 
 
 function init() {
-    renderUserInput();
+    renderMessage();
 
 
 }
