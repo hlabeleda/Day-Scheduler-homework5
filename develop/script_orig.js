@@ -120,6 +120,15 @@ function init() {
 init();
 
 
+var userTextInput9a = document.querySelector("#text9a");
+var userTextInput10a = document.querySelector("#text10a");
+var userTextInput11a = document.querySelector("#text11a");
+var userTextInput12p = document.querySelector("#text12p");
+var userTextInput1p = document.querySelector("#text1p");
+var userTextInput2p = document.querySelector("#text2p");
+var userTextInput3p = document.querySelector("#text3p");
+var userTextInput4p = document.querySelector("#text4p");
+var userTextInput5p = document.querySelector("#text5p");
 
 
 

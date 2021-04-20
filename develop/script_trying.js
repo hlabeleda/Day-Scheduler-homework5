@@ -59,17 +59,47 @@ var userTextInput = document.querySelector(".description");
 //console.log("what am i", userTextInput);
 var saveButton = document.querySelector(".saveBtn");
 
+var myDay = [];
 
-function saveUserInput() {
-    var userInput = {
-        userTextInput: userTextInput.value,
-    
-        
-    };
-    
-    localStorage.setItem("userInput", JSON.stringify(userInput));
+function renderMessage() {
+
+    for (var i = 0; i < myDay.length; i++) {
+        var today = myDay[i];
+
+        document.querySelector(".description").textContent = lastUserInput.userTextInput;
+
+
+
+
+
+
+    }
+
+}
+
+
+
+
+function storeUserInput() {
+    localStorage.setItem("myDay", JSON.stringify(myDay));
     
 }
+   saveButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var userInput = userTextInput.value.trim();
+
+    if (userInput === "") {
+        return;
+    }
+
+    myDay.push(userInput);
+
+    storeUserInput();
+    renderMessage();
+
+   });
+    
 
 // function renderUserInput() {
 //     var lastUserInput = JSON.parse(localStorage.getItem("userInput"));
@@ -86,38 +116,19 @@ function saveUserInput() {
     
 // }
 
-function renderMessage() {
-    var lastUserInput = JSON.parse(localStorage.getItem("userInput"));
-
-    if (lastUserInput !== null) {
-        document.querySelector(".description").textContent = lastUserInput.userTextInput;
-    }
-
-
-}
-
-
-var myDay =[];
-
-
-
-saveButton.addEventListener("click", function(event) {
-
-    event.preventDefault();
-    saveUserInput();
-    renderMessage();
-
-
-
-});
-
-
 function init() {
+    var lastUserInput = JSON.parse(localStorage.getItem("userInput"));
+    
+    if (lastUserInput !== null) {
+        myDay = lastUserInput;
+    }
     renderMessage();
-
-
+    
 }
+
+
 init();
+
 
 
 
